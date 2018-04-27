@@ -8,6 +8,7 @@ package ua.org.smit.opencms.webgui.controller;
 import java.util.ArrayList;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import ua.org.smit.opencms.dao.MaterialEntityCMS;
@@ -26,11 +27,27 @@ public class ControllerGUI {
     public ModelAndView getHome(){
         ModelAndView model = new ModelAndView("home");
         
-        ArrayList<MaterialEntityCMS> materials = logic.getAll();
+        ArrayList<MaterialEntityCMS> materialsCat1 = logic.getLastPublicMaterialsByCatAndLimit(1, 5);
+        ArrayList<MaterialEntityCMS> materialsCat2 = logic.getLastPublicMaterialsByCatAndLimit(2, 5);
+        ArrayList<MaterialEntityCMS> materialsCat3 = logic.getLastPublicMaterialsByCatAndLimit(3, 5);
         
-        model.addObject("materials", materials);
+        model.addObject("materialsCat1", materialsCat1);
+        model.addObject("materialsCat2", materialsCat2);
+        model.addObject("materialsCat3", materialsCat3);
+        
+        return model;
+    }
+    
+    @RequestMapping(value= "/create_material")
+    public ModelAndView createMaterial(){
+        ModelAndView model = new ModelAndView("Create material");
         model.addObject("categories", logic.getAllCategories());
-        
+        return model;
+    }
+    @RequestMapping(value = "/categories")
+    public ModelAndView categories(){
+        ModelAndView model = new ModelAndView("categories");
+        model.addObject("categories", logic.getAllCategories());
         return model;
     }
     
@@ -50,6 +67,18 @@ public class ControllerGUI {
         
         
         return "redirect:home";
+    }
+    
+    @RequestMapping(value= "/show_material")
+    public ModelAndView showMaterial(
+        @RequestParam(value = "alias") String alias){
+        
+        ModelAndView model = new ModelAndView("materialView");
+        MaterialEntityCMS material = logic.getPublicMaterialByAlias(alias);
+        model.addObject("material", material);
+        
+        
+        return model;
     }
     
     

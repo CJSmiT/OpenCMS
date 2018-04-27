@@ -35,6 +35,8 @@ public interface LogicInterface {
     public MaterialEntityCMS getPublicMaterialByAlias(String url);
 
     public ArrayList<MaterialEntityCMS> getPublicMaterialsByCatAndLimit(int id, int indexInt, int limit);
+    
+    public ArrayList<MaterialEntityCMS> getLastPublicMaterialsByCatAndLimit(int categoryId, int limit);
 
     public void deleteMaterialsByCategory(int id);
 

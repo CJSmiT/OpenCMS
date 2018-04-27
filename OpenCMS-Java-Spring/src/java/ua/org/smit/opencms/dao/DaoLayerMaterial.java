@@ -377,4 +377,40 @@ class DaoLayerMaterial extends ConectMSQL{
         }
     }
     
+    ArrayList<MaterialEntityCMS> getLastPublicMaterialsByCatAndLimit(int categoryId, int limit) {
+        ArrayList<MaterialEntityCMS> materials = new ArrayList();
+        
+        Connection connect = getConnection();
+        PreparedStatement ps = null;
+        String sql = "SELECT * FROM " + table + " "
+                + "WHERE categoryId = "+ categoryId+ " "
+                + "AND isPublic = ? "
+                + "order by id desc "
+                + "limit "+ limit ;
+        
+        try{
+            
+            ps = connect.prepareStatement(sql);
+            ps.setBoolean(1, true);
+            
+            ResultSet resultSet = ps.executeQuery();
+            
+            while(resultSet.next()){
+                materials.add(getByParser(resultSet));
+            }
+            
+            
+        }catch(SQLException ex){
+            Logger.getLogger(DaoLayerMaterial.class.getName()).log(Level.SEVERE, null, ex);
+        }finally{
+            try {
+                ps.close();
+                connect.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(DaoLayerMaterial.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return materials;
+    }
+    
 }

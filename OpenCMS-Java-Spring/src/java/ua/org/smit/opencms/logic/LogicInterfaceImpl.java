@@ -133,4 +133,9 @@ public class LogicInterfaceImpl implements LogicInterface {
     public ArrayList<CategoryEntityCMS> getAllCategories() {
         return dao.getAllCategoryes();
     }
+
+    @Override
+    public ArrayList<MaterialEntityCMS> getLastPublicMaterialsByCatAndLimit(int categoryId, int limit) {
+        return dao.getLastPublicMaterialsByCatAndLimit(categoryId, limit);
+    }
 }

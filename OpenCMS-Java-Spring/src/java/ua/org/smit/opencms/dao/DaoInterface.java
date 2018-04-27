@@ -39,9 +39,13 @@ public interface DaoInterface {
     public ArrayList<MaterialEntityCMS> getMaterialsByCatAndLimit(int catID, int index, int limit);
 
     public ArrayList<MaterialEntityCMS> getPublicMaterialsByCatAndLimit(int categoryId, int indexStart, int limit);
+    
+    public ArrayList<MaterialEntityCMS> getLastPublicMaterialsByCatAndLimit(int categoryId, int limit);
 
     public MaterialEntityCMS getPublicMaterialByAlias(String alias);
 
     public void clearDb();
+    
+    
       
 }

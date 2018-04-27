@@ -95,5 +95,10 @@ public class DaoInterfaceImpl implements DaoInterface{
         daoMaterial.clear();
         daoCategory.clear();
     }
+
+    @Override
+    public ArrayList<MaterialEntityCMS> getLastPublicMaterialsByCatAndLimit(int categoryId, int limit) {
+        return daoMaterial.getLastPublicMaterialsByCatAndLimit(categoryId, limit);
+    }
     
 }
