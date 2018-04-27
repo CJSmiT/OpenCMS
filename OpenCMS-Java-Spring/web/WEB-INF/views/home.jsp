@@ -10,39 +10,60 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Hello world!</title>
+        <title>Making a new material</title>
     </head>
-    <body style="margin:10px;">
-       <h3>Making a new material</h3>
-       <div style="margin:0 auto; max-width: 500px; width:100%; background-color: yellowgreen">
-       <form method="post" action="send_material">
-           <p>Title </p>
-           <input type="text" name="title"><br><br>
-           <p>Text Body </p>
-           <textarea name="textBody"></textarea><br>
-           <p>Категория ID </p>
-           
-           <select name="categoryId">
-           <c:forEach var="category" items="${categories}">
-               <option value="${category.getId()}">${category.getTitle()}</option>
-           </c:forEach>
-           </select>
-           
-           <input type="submit">
-       </form>
+    <body>
+        <div>
+            <div style="margin:0 auto; max-width: 900px; width:100%">
+            <h1>Создания материала</h1>
+
+            <form method="post" action="send_material">
+               <h3>Заголовок</h3>
+               <div><input type="text" name="title" style="width: 100%; height: 30px"></div>
+               <h3>Категория</h3>
+               <div>
+                   <select name="categoryId" style="width: 100%; height: 30px">
+                       <c:forEach var="category" items="${categories}">
+                           <option value="${category.getId()}">${category.getTitle()}</option>
+                       </c:forEach>
+                   </select>
+               </div>
+               <h3>Материал</h3>
+               <div>
+                   <textarea name="textBody" style="width: 100%; height: 150px"></textarea>
+               </div>
+               <div>
+                   <input type="submit" style="width: 100%; height: 30px; color: blue">
+               </div>
+            </form>
+            </div>
        
-       
-       <c:forEach var="material" items="${materials}">
-           <ul>
-                <li>${material.getTitle()}</li>
-                <li>Hits ${material.getHits()}</li>
-                <li>Категория ${material.getCategoryId()}</li>
-                <li>Дата создания ${material.getTimePublic()}</li>
-                <li>Опубликован  ${material.isIsPublic()}</li>
-                <li>${material.getTextBody()}</li>
-            </ul>
-        </c:forEach>
-        
+            <div style="margin:0 auto; max-width: 900px; width:100%">
+                <c:forEach var="material" items="${materials}">
+                    <h1 style="color: blue">${material.getTitle()}</h1>
+                         <div>
+                             <table>
+                                 <tr>
+                                     <td><p>Дата создания ${material.getTimePublic()} | </p></td>
+                                     <td><p>Просмотры ${material.getHits()}</p></td>
+                                     <td><p> | Опубликован  ${material.isIsPublic()}</p></td>
+                                 </tr>
+                             </table>
+                         
+                            <div>
+                                <table border="1">
+                                    <tr>
+                                        <td>
+                                            <p>${material.getTextBody()}</p>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div><p>Категория ${material.getTitle()}</p></div>
+                            <div><hr/></div>
+                         </div>
+                 </c:forEach>
+            </div>
        </div>
     </body>
 </html>
