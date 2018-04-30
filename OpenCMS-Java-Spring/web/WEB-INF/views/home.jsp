@@ -28,14 +28,18 @@
                     <hr>
                 <div>
                     <c:forEach var="material" items="${materialsCat2}">
-                        <h3 style="color: blue">${material.getTitle()}</h3>
+                        <a href="show_material?alias=${material.getAlias()}">
+                            <h3 style="color: blue">${material.getTitle()}</h3>
+                        </a>
                         <p>${material.getTextBody()}</p>
                     </c:forEach>
                 </div>
                     <hr>
                 <div>
                     <c:forEach var="material" items="${materialsCat3}">
-                        <h3 style="color: blue">${material.getTitle()}</h3>
+                       <a href="show_material?alias=${material.getAlias()}">
+                            <h3 style="color: blue">${material.getTitle()}</h3>
+                        </a>
                         <p>${material.getTextBody()}</p>
                      </c:forEach>
                 </div>

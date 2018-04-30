@@ -58,28 +58,57 @@ public class ControllerGUI {
         dto.setTitle(material.getTitle());
         dto.setTextBody(material.getTextBody());
         dto.setCategoryId(material.getCategoryId());
+        dto.setIsPublic(material.isIsPublic());
         
         if (logic.thisCategoryExist(dto.getCategoryId())){
             logic.makeMaterial(dto);
         } else {
             // err!
         }
-        
-        
+
         return "redirect:home";
     }
     
     @RequestMapping(value= "/show_material")
     public ModelAndView showMaterial(
-        @RequestParam(value = "alias") String alias){
+            @RequestParam(value = "alias") String alias){
         
         ModelAndView model = new ModelAndView("materialView");
         MaterialEntityCMS material = logic.getPublicMaterialByAlias(alias);
         model.addObject("material", material);
         
-        
         return model;
     }
     
+    @RequestMapping(value= "/All Materials")
+    public ModelAndView getAllmaterials(){
+        ModelAndView model = new ModelAndView("All Materials");
+        ArrayList<MaterialEntityCMS> Allmaterials = logic.getAll();
+        model.addObject("Allmaterials", Allmaterials);      
+        return model;
+    }
+    
+    
+//    @RequestMapping(value= "/updateMaterial")
+//    public Object PublicMaterial(MaterialGUIDto material){
+//
+//        MaterialDto dto = new MaterialDto();
+//        dto.setTitle(material.getTitle());
+//        dto.setTextBody(material.getTextBody());
+//        dto.setAlias(material.getAlias());
+//        dto.setCategoryId(material.getCategoryId());
+//        dto.setUserCreaterId(material.getUserCreaterId());
+//        dto.setHits(material.getHits());
+//        dto.setIsPublic(material.isIsPublic());
+//        dto.setLockerUserId(material.getLockerUserId());
+//        dto.setRealTimePublic(material.getRealTimePublic());
+//        dto.setTimePublic(material.getTimePublic());
+//        
+//        
+//        logic.updateMaterial(dto);
+//       
+//        
+//        return "redirect:home";
+//    }
     
 }

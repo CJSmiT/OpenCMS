@@ -29,6 +29,13 @@
                        </c:forEach>
                    </select>
                </div>
+               <h3>Статус</h3>
+               <div>
+                    <select name="isPublic" style="width: 100%; height: 30px">
+                        <option value="false">Не публиковать</option>
+                        <option value="true">Опубликовать</option>
+                    </select>
+               </div>
                <h3>Материал</h3>
                <div>
                    <textarea name="textBody" style="width: 100%; height: 150px"></textarea>

@@ -3,8 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/alex/NetBeansProjects/site_zemlaynoy_smit/OpenCMS/OpenCMS-Java-Spring/src/java/ua/org/smit/opencms/dao/ConectMSQL.java</file>
-            <file>file:/home/alex/NetBeansProjects/site_zemlaynoy_smit/OpenCMS/OpenCMS-Java-Spring/src/java/ua/org/smit/opencms/webgui/config/Initializer.java</file>
+            <file>file:/home/alex/NetBeansProjects/site_zemlaynoy_smit/OpenCMS/OpenCMS-Java-Spring/src/java/ua/org/smit/opencms/logic/MaterialConverter.java</file>
+            <file>file:/home/alex/NetBeansProjects/site_zemlaynoy_smit/OpenCMS/OpenCMS-Java-Spring/web/WEB-INF/views/menu.jsp</file>
+            <file>file:/home/alex/NetBeansProjects/site_zemlaynoy_smit/OpenCMS/OpenCMS-Java-Spring/src/java/ua/org/smit/opencms/webgui/controller/ControllerGUI.java</file>
+            <file>file:/home/alex/NetBeansProjects/site_zemlaynoy_smit/OpenCMS/OpenCMS-Java-Spring/web/WEB-INF/views/Create%20material.jsp</file>
+            <file>file:/home/alex/NetBeansProjects/site_zemlaynoy_smit/OpenCMS/OpenCMS-Java-Spring/web/WEB-INF/views/buttonForPublic.jsp</file>
+            <file>file:/home/alex/NetBeansProjects/site_zemlaynoy_smit/OpenCMS/OpenCMS-Java-Spring/web/WEB-INF/views/materialView.jsp</file>
             <file>file:/home/alex/NetBeansProjects/site_zemlaynoy_smit/OpenCMS/OpenCMS-Java-Spring/web/WEB-INF/views/home.jsp</file>
         </group>
     </open-files>

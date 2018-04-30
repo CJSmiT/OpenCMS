@@ -22,7 +22,7 @@ import java.util.logging.Logger;
 public class ConectMSQL {
     private static final String LOGIN = getPropertiesMethod().getProperty("login");
     private static final String PASSWORD = getPropertiesMethod().getProperty("password");
-    private static final String URL = "jdbc:mysql://" + getPropertiesMethod().getProperty("address_port_db");;  //localhost:3306/test
+    private static final String URL = "jdbc:mysql://" + getPropertiesMethod().getProperty("address_port_db");  //localhost:3306/test
     
     public Connection getConnection(){
         try {
@@ -41,11 +41,11 @@ public class ConectMSQL {
     }
     
     private static Properties getPropertiesMethod(){
-        Properties pro = new Properties();
+        Properties properties = new Properties();
         try {
             FileInputStream in = new FileInputStream("/home/alex/db.properties"); 
-            pro.load(in);
-            return pro;
+            properties.load(in);
+            return properties;
         } catch (FileNotFoundException ex) {
             Logger.getLogger(ConectMSQL.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
