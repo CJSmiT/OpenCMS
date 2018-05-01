@@ -47,4 +47,10 @@ public interface LogicInterface {
     public boolean theMaterialExist(int materialId);
 
     public Object getAllCategories();
+
+    public void makeThisMaterialAsPublic(String alias);
+
+    public MaterialEntityCMS getMaterialByAlias(String alias);
+
+    public void makeThisMaterialAsNoPublic(String alias);
 }

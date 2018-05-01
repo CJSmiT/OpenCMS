@@ -138,4 +138,19 @@ public class LogicInterfaceImpl implements LogicInterface {
     public ArrayList<MaterialEntityCMS> getLastPublicMaterialsByCatAndLimit(int categoryId, int limit) {
         return dao.getLastPublicMaterialsByCatAndLimit(categoryId, limit);
     }
+
+    @Override
+    public void makeThisMaterialAsPublic(String alias) {
+        dao.makeThisMaterialAsPublic(alias);
+    }
+
+    @Override
+    public MaterialEntityCMS getMaterialByAlias(String alias) {
+        return dao.getMaterialByAlias(alias);
+    }
+
+    @Override
+    public void makeThisMaterialAsNoPublic(String alias) {
+        dao.makeThisMaterialAsNoPublic(alias);
+    }
 }

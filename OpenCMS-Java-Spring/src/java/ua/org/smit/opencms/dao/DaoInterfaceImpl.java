@@ -100,5 +100,20 @@ public class DaoInterfaceImpl implements DaoInterface{
     public ArrayList<MaterialEntityCMS> getLastPublicMaterialsByCatAndLimit(int categoryId, int limit) {
         return daoMaterial.getLastPublicMaterialsByCatAndLimit(categoryId, limit);
     }
+
+    @Override
+    public void makeThisMaterialAsPublic(String alias) {
+        daoMaterial.makeThisMaterialAsPublic(alias);
+    }
+
+    @Override
+    public MaterialEntityCMS getMaterialByAlias(String alias) {
+        return daoMaterial.getMaterialByAlias(alias);
+    }
+
+    @Override
+    public void makeThisMaterialAsNoPublic(String alias) {
+        daoMaterial.makeThisMaterialAsNoPublic(alias);
+    }
     
 }

@@ -74,41 +74,36 @@ public class ControllerGUI {
             @RequestParam(value = "alias") String alias){
         
         ModelAndView model = new ModelAndView("materialView");
-        MaterialEntityCMS material = logic.getPublicMaterialByAlias(alias);
+        MaterialEntityCMS material = logic.getMaterialByAlias(alias);
         model.addObject("material", material);
+
+        return model;
+    }
+    
+    @RequestMapping(value= "/all_materials")
+    public ModelAndView getAllmaterials(){
+        ModelAndView model = new ModelAndView("all_materials");
+        ArrayList<MaterialEntityCMS> all_materials = logic.getAll();
+        model.addObject("all_materials", all_materials);    
         
         return model;
     }
     
-    @RequestMapping(value= "/All Materials")
-    public ModelAndView getAllmaterials(){
-        ModelAndView model = new ModelAndView("All Materials");
-        ArrayList<MaterialEntityCMS> Allmaterials = logic.getAll();
-        model.addObject("Allmaterials", Allmaterials);      
-        return model;
+    
+    @RequestMapping(value= "/set_material_public")
+    public Object PublicMaterial(@RequestParam(value = "alias") String alias){
+
+       logic.makeThisMaterialAsPublic(alias);
+
+        return "redirect:show_material?alias=" + alias;
     }
     
-    
-//    @RequestMapping(value= "/updateMaterial")
-//    public Object PublicMaterial(MaterialGUIDto material){
-//
-//        MaterialDto dto = new MaterialDto();
-//        dto.setTitle(material.getTitle());
-//        dto.setTextBody(material.getTextBody());
-//        dto.setAlias(material.getAlias());
-//        dto.setCategoryId(material.getCategoryId());
-//        dto.setUserCreaterId(material.getUserCreaterId());
-//        dto.setHits(material.getHits());
-//        dto.setIsPublic(material.isIsPublic());
-//        dto.setLockerUserId(material.getLockerUserId());
-//        dto.setRealTimePublic(material.getRealTimePublic());
-//        dto.setTimePublic(material.getTimePublic());
-//        
-//        
-//        logic.updateMaterial(dto);
-//       
-//        
-//        return "redirect:home";
-//    }
+    @RequestMapping(value= "/set_material_no_public")
+    public Object NoPublicMaterial(@RequestParam(value = "alias") String alias){
+
+       logic.makeThisMaterialAsNoPublic(alias);
+
+        return "redirect:show_material?alias=" + alias;
+    }
     
 }

@@ -21,7 +21,7 @@
             Categories
         </div>
     </a>
-    <a href="All Materials" style="color: whitesmoke;display: inline-block">
+    <a href="all_materials" style="color: whitesmoke;display: inline-block">
         <div style="width:150px; height: 40px;background-color: dimgray;margin: 5px">
             All materials
         </div>
