@@ -7,6 +7,7 @@ package ua.org.smit.opencms.webgui.controller;
 
 import java.util.ArrayList;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -23,7 +24,7 @@ public class ControllerGUI {
     
     private LogicInterface logic = new LogicInterfaceImpl();
     
-    @RequestMapping(value= "/home")
+    @RequestMapping(value= {"/home"})
     public ModelAndView getHome(){
         ModelAndView model = new ModelAndView("home");
         
@@ -100,9 +101,27 @@ public class ControllerGUI {
     
     @RequestMapping(value= "/set_material_no_public")
     public Object NoPublicMaterial(@RequestParam(value = "alias") String alias){
-
        logic.makeThisMaterialAsNoPublic(alias);
 
+        return "redirect:show_material?alias=" + alias;
+    }
+    
+    @RequestMapping(value = "/change_public_status_material")
+    public Object changePublicStatusMaterial(
+            @RequestParam(value = "alias") String alias,
+            @RequestParam(value = "public") String publicS){
+        
+        // 1 guest / admin
+        // 2 rules 
+        // 3 
+        
+        boolean status = Boolean.valueOf(publicS);
+        if (status){
+            logic.makeThisMaterialAsPublic(alias);
+        } else {
+            logic.makeThisMaterialAsNoPublic(alias);
+        }
+        
         return "redirect:show_material?alias=" + alias;
     }
     

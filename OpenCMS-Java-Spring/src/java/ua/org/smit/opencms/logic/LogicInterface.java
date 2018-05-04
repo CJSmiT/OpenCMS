@@ -53,4 +53,6 @@ public interface LogicInterface {
     public MaterialEntityCMS getMaterialByAlias(String alias);
 
     public void makeThisMaterialAsNoPublic(String alias);
+    
+    public void changePublicStatusMaterial(String alias);
 }

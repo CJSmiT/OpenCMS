@@ -46,11 +46,9 @@ public interface DaoInterface {
 
     public void clearDb();
 
-    public void makeThisMaterialAsPublic(String alias);
 
     public MaterialEntityCMS getMaterialByAlias(String alias);
 
-    public void makeThisMaterialAsNoPublic(String alias);
     
     
       

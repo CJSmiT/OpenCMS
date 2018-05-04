@@ -43,7 +43,7 @@ public class ConectMSQL {
     private static Properties getPropertiesMethod(){
         Properties properties = new Properties();
         try {
-            FileInputStream in = new FileInputStream("/home/alex/db.properties"); 
+            FileInputStream in = new FileInputStream("/home/smit/tmp/db.properties"); 
             properties.load(in);
             return properties;
         } catch (FileNotFoundException ex) {

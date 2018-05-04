@@ -413,34 +413,11 @@ class DaoLayerMaterial extends ConectMSQL{
         return materials;
     }
 
-    void makeThisMaterialAsPublic(String alias) {
-        Connection connect = getConnection();
-        PreparedStatement ps = null;
-        try {
-            String query = "UPDATE `" + table + "` "
-                    + "SET isPublic = 1,"
-                    + "WHERE alias='" + alias +"'"
-                    + "limit 1";
-            ps = connect.prepareStatement(query);
-            ps.executeUpdate();
-            
-        } catch (SQLException ex) {
-            Logger.getLogger(DaoLayerMaterial.class.getName()).log(Level.SEVERE, null, ex);
-        }finally {
-            try {
-                ps.close();
-                connect.close();
-            } catch (SQLException ex) {
-                Logger.getLogger(DaoLayerMaterial.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-    }
-
     MaterialEntityCMS getMaterialByAlias(String alias) {
         Connection connect = getConnection();
         PreparedStatement preparedStatement = null;
         String sql = "SELECT * FROM " + table + " "
-                + "WHERE `alias` = '"+ alias + "'"
+                + "WHERE alias = '"+ alias + "' "
                 + "limit 1";
         MaterialEntityCMS material = null;
         try{
@@ -472,27 +449,6 @@ class DaoLayerMaterial extends ConectMSQL{
         }
     }
 
-    void makeThisMaterialAsNoPublic(String alias) {
-        Connection connect = getConnection();
-        PreparedStatement ps = null;
-        try {
-            String query = "UPDATE `" + table + "` "
-                    + "SET isPublic = 0,"
-                    + "WHERE alias='" + alias +"'" 
-                    + "limit 1";
-            ps = connect.prepareStatement(query);
-            ps.executeUpdate();
-            
-        } catch (SQLException ex) {
-            Logger.getLogger(DaoLayerMaterial.class.getName()).log(Level.SEVERE, null, ex);
-        }finally {
-            try {
-                ps.close();
-                connect.close();
-            } catch (SQLException ex) {
-                Logger.getLogger(DaoLayerMaterial.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-    }
+
     
 }

@@ -141,7 +141,9 @@ public class LogicInterfaceImpl implements LogicInterface {
 
     @Override
     public void makeThisMaterialAsPublic(String alias) {
-        dao.makeThisMaterialAsPublic(alias);
+        MaterialEntityCMS material = dao.getMaterialByAlias(alias);
+        material.setIsPublic(true);
+        dao.updateMaterial(material);
     }
 
     @Override
@@ -151,6 +153,21 @@ public class LogicInterfaceImpl implements LogicInterface {
 
     @Override
     public void makeThisMaterialAsNoPublic(String alias) {
-        dao.makeThisMaterialAsNoPublic(alias);
+        MaterialEntityCMS material = dao.getMaterialByAlias(alias);
+        material.setIsPublic(false);
+        dao.updateMaterial(material);
+    }
+
+    @Override
+    public void changePublicStatusMaterial(String alias) {
+        MaterialEntityCMS material = dao.getMaterialByAlias(alias);
+        
+        if(material.isIsPublic() == true){
+            material.setIsPublic(false);
+        }else {
+            material.setIsPublic(true);
+        }
+        
+        dao.updateMaterial(material);
     }
 }
