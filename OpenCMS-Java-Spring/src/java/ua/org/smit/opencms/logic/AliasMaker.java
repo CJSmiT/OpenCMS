@@ -44,7 +44,7 @@ public class AliasMaker {
                 result.append("i");
             }else if(titleChar[i] == 1105){ //ё
                 result.append("e");
-            }else if (titleChar[i] == 32){
+            }else if (titleChar[i] == 32 || titleChar[i] == 95){
                 result.append("_");
             }else {
                 continue;
