@@ -20,22 +20,24 @@ import java.util.logging.Logger;
  * @author alex
  */
 public class ConectMSQL {
-    private static final String LOGIN = getPropertiesMethod().getProperty("login");
-    private static final String PASSWORD = getPropertiesMethod().getProperty("password");
-    private static final String URL = "jdbc:mysql://" + getPropertiesMethod().getProperty("address_port_db");  //localhost:3306/test
+    private static final Properties PROPERTIES = getPropertiesMethod();
+    private static final String LOGIN = PROPERTIES.getProperty("login");
+    private static final String PASSWORD = PROPERTIES.getProperty("password");
+    private static final String URL = "jdbc:mysql://" 
+            + PROPERTIES.getProperty("address") + ":" 
+            + PROPERTIES.getProperty("port") + "/" 
+            + PROPERTIES.getProperty("db");
     
     public Connection getConnection(){
         try {
-            Connection connection = null;
+            Connection connection;
             
             Class.forName("com.mysql.jdbc.Driver");
             connection = DriverManager.getConnection(URL, LOGIN, PASSWORD);
             return connection;
-        } catch (ClassNotFoundException ex) {
+        } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(ConectMSQL.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
-            Logger.getLogger(ConectMSQL.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        } 
         
         throw new RuntimeException("Err to create connect!");
     }
@@ -43,7 +45,7 @@ public class ConectMSQL {
     private static Properties getPropertiesMethod(){
         Properties properties = new Properties();
         try {
-            FileInputStream in = new FileInputStream("/home/smit/tmp/db.properties"); 
+            FileInputStream in = new FileInputStream("/home/alex/tmp/db.properties"); 
             properties.load(in);
             return properties;
         } catch (FileNotFoundException ex) {
