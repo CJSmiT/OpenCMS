@@ -19,7 +19,7 @@ public class MaterialDto {
     private int categoryId;
     private int userCreaterId;
     private int hits;
-    private boolean isPublic;
+    private boolean publicMaterial;
     private int lockerUserId;
     private Timestamp realTimePublic;
     private Timestamp timePublic;
@@ -64,12 +64,12 @@ public class MaterialDto {
         this.hits = hits;
     }
 
-    public boolean isIsPublic() {
-        return isPublic;
+    public boolean isPublicMaterial() {
+        return publicMaterial;
     }
 
-    public void setIsPublic(boolean isPublic) {
-        this.isPublic = isPublic;
+    public void setIsPublicMaterial(boolean isPublic) {
+        this.publicMaterial = isPublic;
     }
 
     public int getLockerUserId() {
@@ -114,7 +114,7 @@ public class MaterialDto {
 
     @Override
     public String toString() {
-        return "MaterialDto{" + "id=" + id + ", title=" + title + ", body=" + body + ", alias=" + alias + ", categoryId=" + categoryId + ", userCreaterId=" + userCreaterId + ", hits=" + hits + ", isPublic=" + isPublic + ", lockerUserId=" + lockerUserId + ", realTimePublic=" + realTimePublic + ", timePublic=" + timePublic + '}';
+        return "MaterialDto{" + "id=" + id + ", title=" + title + ", body=" + body + ", alias=" + alias + ", categoryId=" + categoryId + ", userCreaterId=" + userCreaterId + ", hits=" + hits + ", isPublic=" + publicMaterial + ", lockerUserId=" + lockerUserId + ", realTimePublic=" + realTimePublic + ", timePublic=" + timePublic + '}';
     }
     
     

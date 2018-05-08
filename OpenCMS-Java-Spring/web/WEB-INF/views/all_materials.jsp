@@ -16,7 +16,7 @@
         <jsp:include page="menu.jsp"/>
         <div style="margin: 0 auto; max-width: 1000px; width: 100%">
             <c:forEach var="material" items="${all_materials}">
-                <a href="show_material?alias=${material.getAlias()}">
+                <a href="${pageContext.request.contextPath}/show_material?alias=${material.getAlias()}">
                     <c:choose>
                         <c:when test="${material.isIsPublic() == false}">
                             <h3 style="color: red">${material.getTitle()}</h3>

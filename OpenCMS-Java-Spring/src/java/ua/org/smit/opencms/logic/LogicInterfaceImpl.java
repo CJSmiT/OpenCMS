@@ -55,7 +55,7 @@ public class LogicInterfaceImpl implements LogicInterface {
         material.setTitle(dto.getTitle());
         material.setTextBody(dto.getBody());
         material.setCategoryId(dto.getCategoryId());
-        material.setIsPublic(dto.isIsPublic());
+        material.setIsPublic(dto.isPublicMaterial());
         material.setLockerUserId(dto.getLockerUserId());
         material.setRealTimePublic(dto.getRealTimePublic());
         

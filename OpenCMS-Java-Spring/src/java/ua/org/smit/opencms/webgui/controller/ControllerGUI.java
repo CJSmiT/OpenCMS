@@ -7,24 +7,25 @@ package ua.org.smit.opencms.webgui.controller;
 
 import java.util.ArrayList;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import ua.org.smit.opencms.dao.MaterialEntityCMS;
-import ua.org.smit.opencms.webgui.dto.MaterialGUIDto;
 import ua.org.smit.opencms.logic.LogicInterfaceImpl;
 import ua.org.smit.opencms.logic.MaterialDto;
 import ua.org.smit.opencms.logic.LogicInterface;
+import ua.org.smit.opencms.webgui.dto.ConverterGuiToLogic;
+import ua.org.smit.opencms.webgui.dto.MaterialGUIDto;
 
 
 @Controller
 public class ControllerGUI {
     
     private LogicInterface logic = new LogicInterfaceImpl();
+    private ConverterGuiToLogic convertor = new ConverterGuiToLogic();
+    private final TextUtil textUtil = new TextUtil();
     
-    @RequestMapping(value= {"/home"})
+    @RequestMapping(value= {"/","/home"})
     public ModelAndView getHome(){
         ModelAndView model = new ModelAndView("home");
         
@@ -35,39 +36,54 @@ public class ControllerGUI {
         model.addObject("materialsCat1", materialsCat1);
         model.addObject("materialsCat2", materialsCat2);
         model.addObject("materialsCat3", materialsCat3);
+        model.addObject("textUtil", textUtil);
         
         return model;
     }
     
-    @RequestMapping(value= "/create_material")
-    public ModelAndView createMaterial(){
-        ModelAndView model = new ModelAndView("Create material");
+    @RequestMapping(value= "/material_manager")
+    public ModelAndView materialManager(
+            @RequestParam(value = "alias", required = false) String alias){
+        ModelAndView model = new ModelAndView("material_manager");
+        if(alias != null){
+            MaterialEntityCMS material = logic.getMaterialByAlias(alias);
+            model.addObject("material", material);
+        }
         model.addObject("categories", logic.getAllCategories());
         return model;
     }
+    
+    
+    @RequestMapping(value= "/material_manager_action")
+    public Object materialManagerAction(MaterialGUIDto material){
+        String alias = null;
+        
+        if (material.getId()>0){
+            MaterialDto dtoLogic = this.convertor.convert(material);
+            this.logic.updateMaterial(dtoLogic);
+            MaterialEntityCMS entity = logic.getMaterialByID(material.getId());
+            alias = entity.getAlias();
+            
+        } else {            
+            if (logic.thisCategoryExist(material.getCategoryId())){
+                MaterialDto dtoLogic = this.convertor.convert(material);
+                int id = this.logic.makeMaterial(dtoLogic);
+                MaterialEntityCMS entity = logic.getMaterialByID(id);
+                alias = entity.getAlias();
+            } else {
+                // err!
+            }
+        }
+        
+
+        return "redirect:material_manager?alias=" + alias;
+    }
+    
     @RequestMapping(value = "/categories")
     public ModelAndView categories(){
         ModelAndView model = new ModelAndView("categories");
         model.addObject("categories", logic.getAllCategories());
         return model;
-    }
-    
-    @RequestMapping(value= "/send_material")
-    public Object makingNewMaterial(MaterialGUIDto material){
-        
-        MaterialDto dto = new MaterialDto();
-        dto.setTitle(material.getTitle());
-        dto.setTextBody(material.getTextBody());
-        dto.setCategoryId(material.getCategoryId());
-        dto.setIsPublic(material.isIsPublic());
-        
-        if (logic.thisCategoryExist(dto.getCategoryId())){
-            logic.makeMaterial(dto);
-        } else {
-            // err!
-        }
-
-        return "redirect:home";
     }
     
     @RequestMapping(value= "/show_material")
@@ -122,7 +138,15 @@ public class ControllerGUI {
             logic.makeThisMaterialAsNoPublic(alias);
         }
         
-        return "redirect:show_material?alias=" + alias;
+        return "redirect:material_manager?alias=" + alias;
     }
+    
+    @RequestMapping(value = "/delete_material")
+    public Object deleteMaterial(@RequestParam (value = "idMaterial") int id){
+        
+        logic.deleteByID(id);
+        return "redirect:home";
+    }
+    
     
 }

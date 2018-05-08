@@ -24,7 +24,7 @@ public class MaterialConverter {
         material.setCategoryId(dto.getCategoryId());
         material.setUserCreaterId(dto.getUserCreaterId());
         material.setHits(dto.getHits());
-        material.setIsPublic(dto.isIsPublic());
+        material.setIsPublic(dto.isPublicMaterial());
         material.setLockerUserId(dto.getLockerUserId());
         material.setRealTimePublic(dto.getRealTimePublic());
         material.setTimePublic(dto.getTimePublic());
@@ -40,7 +40,7 @@ public class MaterialConverter {
         dto.setCategoryId(material.getCategoryId());
         dto.setUserCreaterId(material.getUserCreaterId());
         dto.setHits(material.getHits());
-        dto.setIsPublic(material.isIsPublic());
+        dto.setIsPublicMaterial(material.isIsPublic());
         dto.setLockerUserId(material.getLockerUserId());
         dto.setRealTimePublic(material.getRealTimePublic());
         dto.setTimePublic(material.getTimePublic());

@@ -16,26 +16,11 @@
         <jsp:include page="menu.jsp" />
         <div style="margin:0 auto;max-width: 1000px; width: 100%">
             
-            <c:choose>
-                <c:when test="${material.isIsPublic() == false}">
-                    <div>
-                        <a href="change_public_status_material?alias=${material.getAlias()}&public=true" style="color: whitesmoke;display: inline-block">
-                            <div style="width:150px; height: 40px;background-color: dimgray;margin: 5px">
-                            Set as public 
-                            </div>
-                        </a>
-                    </div> 
-                </c:when> 
-                <c:otherwise>
-                    <div>
-                        <a href="change_public_status_material?alias=${material.getAlias()}&public=false" style="color: whitesmoke;display: inline-block">
-                            <div style="width:150px; height: 40px;background-color: dimgray;margin: 5px">
-                            Set as UnPublic 
-                            </div>
-                        </a>
-                    </div> 
-                </c:otherwise>
-            </c:choose> 
+            <a href="${pageContext.request.contextPath}/material_manager?alias=${material.getAlias()}" style="color: whitesmoke; display: inline-block">
+                <div style="width:150px; height: 40px;background-color: dimgray;margin: 5px">
+                    Manager material
+                </div>
+            </a>
                     
             
             

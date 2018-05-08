@@ -10,7 +10,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Making a new material</title>
+        <title>Home</title>
     </head>
     <body>
         
@@ -18,32 +18,32 @@
         
         <div style="background-color: whitesmoke;padding: 10px">
             
-            <a href="address/test_one/test_two">send</a>
+            <a href="${pageContext.request.contextPath}/address/test_one/test_two">send</a>
             
         </div>
         
             <div style="margin:0 auto; max-width: 900px; width:100%">
                 <div>
                     <c:forEach var="material" items="${materialsCat1}">
-                        <a href="show_material?alias=${material.getAlias()}">
+                        <a href="${pageContext.request.contextPath}/show_material?alias=${material.getAlias()}">
                             <h3 style="color: blue">${material.getTitle()}</h3>
                         </a>
-                        <p>${material.getTextBody()}</p>
+                        <p>${textUtil.getSubText(material.getTextBody())}</p>
                     </c:forEach>
                 </div>
                     <hr>
                 <div>
                     <c:forEach var="material" items="${materialsCat2}">
-                        <a href="show_material?alias=${material.getAlias()}">
+                        <a href="${pageContext.request.contextPath}/show_material?alias=${material.getAlias()}">
                             <h3 style="color: blue">${material.getTitle()}</h3>
                         </a>
-                        <p>${material.getTextBody()}</p>
+                        <p>${textUtil.getSubText(material.getTextBody())}</p>
                     </c:forEach>
                 </div>
                     <hr>
                 <div>
                     <c:forEach var="material" items="${materialsCat3}">
-                       <a href="show_material?alias=${material.getAlias()}">
+                       <a href="${pageContext.request.contextPath}/show_material?alias=${material.getAlias()}">
                             <h3 style="color: blue">${material.getTitle()}</h3>
                         </a>
                         <p>${material.getTextBody()}</p>

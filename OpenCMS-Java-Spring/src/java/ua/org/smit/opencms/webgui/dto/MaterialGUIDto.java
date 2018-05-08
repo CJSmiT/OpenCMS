@@ -12,7 +12,7 @@ import java.sql.Timestamp;
  * @author smit
  */
 public class MaterialGUIDto {
-    
+    private int id;
     private String title;
     private String textBody;
     private String alias;
@@ -24,6 +24,15 @@ public class MaterialGUIDto {
     private Timestamp realTimePublic;
     private Timestamp timePublic;
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    
 
     public String getAlias() {
         return alias;
