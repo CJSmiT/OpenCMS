@@ -14,8 +14,8 @@
     </head>
     <body>
         <jsp:include page="menu.jsp" />
-        <c:forEach var="categori" items="${categories}">
-            <p><a href="show_materials?alias=${categori.getAlias()}">${categori.getTitle()}</a></p>
+        <c:forEach var="category" items="${categories}">
+            <p><a href="category_materials?catId=${category.getId()}">${category.getTitle()}</a></p>
         </c:forEach>
     </body>
 </html>

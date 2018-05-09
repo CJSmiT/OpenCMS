@@ -93,6 +93,7 @@ public class ControllerGUI {
         ModelAndView model = new ModelAndView("materialView");
         MaterialEntityCMS material = logic.getMaterialByAlias(alias);
         model.addObject("material", material);
+        model.addObject("textUtil", textUtil);
 
         return model;
     }
@@ -102,6 +103,7 @@ public class ControllerGUI {
         ModelAndView model = new ModelAndView("all_materials");
         ArrayList<MaterialEntityCMS> all_materials = logic.getAll();
         model.addObject("all_materials", all_materials);    
+        model.addObject("textUtil", textUtil);
         
         return model;
     }
@@ -146,6 +148,16 @@ public class ControllerGUI {
         
         logic.deleteByID(id);
         return "redirect:home";
+    }
+    
+    @RequestMapping(value= "/category_materials")
+    public ModelAndView getMaterialsByCategory(@RequestParam(value = "catId") int catId){
+        ModelAndView model = new ModelAndView("category_materials");
+        ArrayList<MaterialEntityCMS> category_materials = logic.getMaterialsByCategory(catId);
+        model.addObject("category_materials", category_materials);    
+        model.addObject("textUtil", textUtil);
+        
+        return model;
     }
     
     

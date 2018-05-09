@@ -250,13 +250,44 @@ class DaoLayerMaterial extends ConectMSQL{
         }
         return materials;
     }
-
+    
     ArrayList<MaterialEntityCMS> getMaterialsByCatAndLimit(int catID, int index, int limit) {
         ArrayList<MaterialEntityCMS> materials = new ArrayList();
         
         Connection connect = getConnection();
         PreparedStatement preparedStatement = null;
         String sql = "SELECT * FROM " + table + " WHERE `categoryId` = '" + catID + "' limit " + index + "," + limit;
+        MaterialEntityCMS material = null;
+        try{
+            
+            preparedStatement = connect.prepareStatement(sql);
+            
+            ResultSet resultSet = preparedStatement.executeQuery();
+            
+            while(resultSet.next()){
+                materials.add(getByParser(resultSet));
+            }
+            
+            
+        }catch(SQLException ex){
+            Logger.getLogger(DaoLayerMaterial.class.getName()).log(Level.SEVERE, null, ex);
+        }finally{
+            try {
+                preparedStatement.close();
+                connect.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(DaoLayerMaterial.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return materials;
+    }
+    
+    ArrayList<MaterialEntityCMS> getMaterialsByCategory(int catID) {
+        ArrayList<MaterialEntityCMS> materials = new ArrayList();
+        
+        Connection connect = getConnection();
+        PreparedStatement preparedStatement = null;
+        String sql = "SELECT * FROM " + table + " WHERE `categoryId` = '" + catID + "'";
         MaterialEntityCMS material = null;
         try{
             

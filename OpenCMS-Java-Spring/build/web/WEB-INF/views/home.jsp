@@ -28,7 +28,9 @@
                         <a href="${pageContext.request.contextPath}/show_material?alias=${material.getAlias()}">
                             <h3 style="color: blue">${material.getTitle()}</h3>
                         </a>
-                        <p>${textUtil.getSubText(material.getTextBody())}</p>
+                            <c:forEach var="textBody" items="${textUtil.getSubText(material.getTextBody())}">
+                                <p>${textBody}</p>
+                            </c:forEach>
                     </c:forEach>
                 </div>
                     <hr>
@@ -37,7 +39,9 @@
                         <a href="${pageContext.request.contextPath}/show_material?alias=${material.getAlias()}">
                             <h3 style="color: blue">${material.getTitle()}</h3>
                         </a>
-                        <p>${textUtil.getSubText(material.getTextBody())}</p>
+                            <c:forEach var="textBody" items="${textUtil.getSubText(material.getTextBody())}">
+                                <p>${textBody}</p>
+                            </c:forEach>
                     </c:forEach>
                 </div>
                     <hr>
@@ -46,7 +50,9 @@
                        <a href="${pageContext.request.contextPath}/show_material?alias=${material.getAlias()}">
                             <h3 style="color: blue">${material.getTitle()}</h3>
                         </a>
-                        <p>${material.getTextBody()}</p>
+                            <c:forEach var="textBody" items="${textUtil.getSubText(material.getTextBody())}">
+                                <p>${textBody}</p>
+                            </c:forEach>
                      </c:forEach>
                 </div>
             </div>

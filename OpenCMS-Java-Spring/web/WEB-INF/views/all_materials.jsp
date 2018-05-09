@@ -30,7 +30,9 @@
                         </c:otherwise>
                     </c:choose>          
                 </a>
-                <p>${material.getTextBody()}</p>
+                <c:forEach var="textBody" items="${textUtil.getSubText(material.getTextBody())}">
+                    <p>${textBody}</p>
+                </c:forEach>
             </c:forEach>
         </div>
     </body>

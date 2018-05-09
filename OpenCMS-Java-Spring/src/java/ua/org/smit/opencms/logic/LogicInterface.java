@@ -28,7 +28,8 @@ public interface LogicInterface {
     public void addFileInMaterial(int materialId, String fileName, File file);
 
     public void deleteFileInMaterial(int materialId, String fileName);
-
+    
+    public ArrayList<MaterialEntityCMS> getMaterialsByCategory(int catID);
 
     public ArrayList<MaterialEntityCMS> getMaterialsByCatAndLimit(int catID, int index, int limit);
 

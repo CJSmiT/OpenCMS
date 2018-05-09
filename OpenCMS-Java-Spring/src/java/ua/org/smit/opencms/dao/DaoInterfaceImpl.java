@@ -74,6 +74,8 @@ public class DaoInterfaceImpl implements DaoInterface{
     public ArrayList<CategoryEntityCMS> getAllCategoryes() {
         return daoCategory.getAllCategoryes();
     }
+    
+    
 
     @Override
     public ArrayList<MaterialEntityCMS> getMaterialsByCatAndLimit(int catID, int index, int limit) {
@@ -105,6 +107,11 @@ public class DaoInterfaceImpl implements DaoInterface{
     @Override
     public MaterialEntityCMS getMaterialByAlias(String alias) {
         return daoMaterial.getMaterialByAlias(alias);
+    }
+
+    @Override
+    public ArrayList<MaterialEntityCMS> getMaterialsByCategory(int catID) {
+        return daoMaterial.getMaterialsByCategory(catID);
     }
 
     

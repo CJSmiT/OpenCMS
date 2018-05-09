@@ -170,4 +170,9 @@ public class LogicInterfaceImpl implements LogicInterface {
         
         dao.updateMaterial(material);
     }
+
+    @Override
+    public ArrayList<MaterialEntityCMS> getMaterialsByCategory(int catID) {
+        return dao.getMaterialsByCategory(catID);
+    }
 }

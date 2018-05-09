@@ -35,6 +35,8 @@ public interface DaoInterface {
     void deleteCategory(CategoryEntityCMS category);
     
     ArrayList<CategoryEntityCMS> getAllCategoryes();
+    
+    ArrayList<MaterialEntityCMS> getMaterialsByCategory(int catID);
 
     public ArrayList<MaterialEntityCMS> getMaterialsByCatAndLimit(int catID, int index, int limit);
 

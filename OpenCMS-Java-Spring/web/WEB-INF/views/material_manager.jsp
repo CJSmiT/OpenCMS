@@ -50,6 +50,7 @@
             <form method="post" action="material_manager_action">
                 <c:if test="${material!=null}">
                     <input type="hidden" name="id" value="${material.getId()}">
+                    <input type="hidden" name="isPublic" value="${material.isIsPublic()}"> 
                 </c:if>
                <h3>Заголовок</h3>
                <input type="text" name="title" value="${material.getTitle()}" style="width: 100%; height: 30px">
