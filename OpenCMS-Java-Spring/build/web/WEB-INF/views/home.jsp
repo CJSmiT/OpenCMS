@@ -16,12 +16,6 @@
         
         <jsp:include page="menu.jsp" />
         
-        <div style="background-color: whitesmoke;padding: 10px">
-            
-            <a href="${pageContext.request.contextPath}/address/test_one/test_two">send</a>
-            
-        </div>
-        
             <div style="margin:0 auto; max-width: 900px; width:100%">
                 <div>
                     <c:forEach var="material" items="${materialsCat1}">
