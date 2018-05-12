@@ -3,7 +3,8 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/smit/NetBeansProjects/OpenCMS/OpenCMS-Java-Spring/src/java/ua/org/smit/opencms/dao/ConectMSQL.java</file>
+            <file>file:/home/smit/NetBeansProjects/OpenCMS/OpenCMS-Java-Spring/web/WEB-INF/views/menu.jsp</file>
+            <file>file:/home/smit/NetBeansProjects/OpenCMS/OpenCMS-Java-Spring/src/java/ua/org/smit/opencms/webgui/controller/LoginController.java</file>
         </group>
     </open-files>
 </project-private>

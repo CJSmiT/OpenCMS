@@ -1,0 +1,13 @@
+.my_button{
+    color: whitesmoke; 
+    display: inline-block;
+}
+.sub_button{
+    width:150px; 
+    height: 40px;
+    background-color: dimgray;
+    margin: 5px;
+}
+#my_id{
+    color:red;
+}

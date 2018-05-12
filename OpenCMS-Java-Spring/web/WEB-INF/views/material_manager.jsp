@@ -11,6 +11,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Material manager</title>
+        <jsp:include page="headLinks.jsp" />
     </head>
     <body>
         <jsp:include page="menu.jsp" />
@@ -20,22 +21,11 @@
                 
                     <c:choose>
                         <c:when test="${material.isIsPublic() == false}">
-                            <div style="display: inline-block">
-                                <a href="${pageContext.request.contextPath}/change_public_status_material?alias=${material.getAlias()}&public=true" style="color: whitesmoke;display: inline-block">
-                                    <div style="width:150px; height: 40px;background-color: dimgray;margin: 5px">
-                                    Set as public 
-                                    </div>
-                                </a>
-                            </div> 
+                            <a class="btn btn-success" href="${pageContext.request.contextPath}/change_public_status_material?alias=${material.getAlias()}&public=true">Set as public</a>
                         </c:when> 
                         <c:otherwise>
-                            <div style="display: inline-block">
-                                <a href="${pageContext.request.contextPath}/change_public_status_material?alias=${material.getAlias()}&public=false" style="color: whitesmoke;display: inline-block">
-                                    <div style="width:150px; height: 40px;background-color: dimgray;margin: 5px">
-                                    Set as UnPublic 
-                                    </div>
-                                </a>
-                            </div> 
+                            <a class="btn btn-danger" href="${pageContext.request.contextPath}/change_public_status_material?alias=${material.getAlias()}&public=false">Set as UnPublc</a>
+                           
                         </c:otherwise>
                     </c:choose>
                 <div style="display: inline-block"> 

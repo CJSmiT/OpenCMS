@@ -24,7 +24,6 @@ public class TextUtil {
                 return list;
             }
         }
-        
         return list; 
     }
     

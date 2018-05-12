@@ -10,10 +10,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-import ua.org.smit.opencms.dao.MaterialEntityCMS;
-import ua.org.smit.opencms.logic.LogicInterfaceImpl;
-import ua.org.smit.opencms.logic.MaterialDto;
-import ua.org.smit.opencms.logic.LogicInterface;
+import ua.org.smit.opencms.authorization.AuthService;
+import ua.org.smit.opencms.authorization.AuthServiceImpl;
+import ua.org.smit.opencms.authorization.UserAuth;
+import ua.org.smit.opencms.content.dao.MaterialEntityCMS;
+import ua.org.smit.opencms.content.LogicInterfaceImpl;
+import ua.org.smit.opencms.content.MaterialDto;
+import ua.org.smit.opencms.content.LogicInterface;
 import ua.org.smit.opencms.webgui.dto.ConverterGuiToLogic;
 import ua.org.smit.opencms.webgui.dto.MaterialGUIDto;
 
@@ -21,6 +24,7 @@ import ua.org.smit.opencms.webgui.dto.MaterialGUIDto;
 @Controller
 public class ControllerGUI {
     
+    private final AuthService authService = new AuthServiceImpl();
     private LogicInterface logic = new LogicInterfaceImpl();
     private ConverterGuiToLogic convertor = new ConverterGuiToLogic();
     private final TextUtil textUtil = new TextUtil();
@@ -37,6 +41,13 @@ public class ControllerGUI {
         model.addObject("materialsCat2", materialsCat2);
         model.addObject("materialsCat3", materialsCat3);
         model.addObject("textUtil", textUtil);
+        
+        UserAuth user = this.authService.getUserBySession(null);
+        if (!user.isGuest()){
+            System.out.println("Hello " + user.getLogin());
+        } else {
+            System.out.println("You are Guest...");
+        }
         
         return model;
     }

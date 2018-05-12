@@ -5,7 +5,7 @@
  */
 package ua.org.smit.opencms.webgui.dto;
 
-import ua.org.smit.opencms.logic.MaterialDto;
+import ua.org.smit.opencms.content.MaterialDto;
 
 /**
  *

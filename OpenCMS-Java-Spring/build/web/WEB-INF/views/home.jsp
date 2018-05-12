@@ -11,12 +11,14 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Home</title>
+        <jsp:include page="headLinks.jsp" />
     </head>
     <body>
         
         <jsp:include page="menu.jsp" />
         
-            <div style="margin:0 auto; max-width: 900px; width:100%">
+        <div class="panel panel-default" style="margin:0 auto; max-width: 900px; width:100%">
+            <div class="panel-body">
                 <div>
                     <c:forEach var="material" items="${materialsCat1}">
                         <a href="${pageContext.request.contextPath}/show_material?alias=${material.getAlias()}">
@@ -50,5 +52,8 @@
                      </c:forEach>
                 </div>
             </div>
+        </div>
+        
+
     </body>
 </html>
