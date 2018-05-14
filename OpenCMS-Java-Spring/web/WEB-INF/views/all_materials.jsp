@@ -31,7 +31,7 @@
                         </c:otherwise>
                     </c:choose>          
                 </a>
-                <c:forEach var="textBody" items="${textUtil.getSubText(material.getTextBody())}">
+                <c:forEach var="textBody" items="${textUtil.getSubText200(material.getTextBody())}">
                     <p>${textBody}</p>
                 </c:forEach>
             </c:forEach>

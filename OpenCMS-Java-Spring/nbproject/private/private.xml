@@ -3,8 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/smit/NetBeansProjects/OpenCMS/OpenCMS-Java-Spring/web/WEB-INF/views/menu.jsp</file>
-            <file>file:/home/smit/NetBeansProjects/OpenCMS/OpenCMS-Java-Spring/src/java/ua/org/smit/opencms/webgui/controller/LoginController.java</file>
+            <file>file:/home/alex/NetBeansProjects/site_zemlaynoy_smit/OpenCMS/OpenCMS-Java-Spring/src/java/ua/org/smit/opencms/authorization/UserAuth.java</file>
+            <file>file:/home/alex/NetBeansProjects/site_zemlaynoy_smit/OpenCMS/OpenCMS-Java-Spring/src/java/ua/org/smit/opencms/authorization/AuthServiceImpl.java</file>
+            <file>file:/home/alex/NetBeansProjects/site_zemlaynoy_smit/OpenCMS/OpenCMS-Java-Spring/src/java/ua/org/smit/opencms/authorization/AuthService.java</file>
+            <file>file:/home/alex/NetBeansProjects/site_zemlaynoy_smit/OpenCMS/OpenCMS-Java-Spring/src/java/ua/org/smit/opencms/authorization/UserType.java</file>
+            <file>file:/home/alex/NetBeansProjects/site_zemlaynoy_smit/OpenCMS/OpenCMS-Java-Spring/src/java/ua/org/smit/opencms/content/dao/MaterialEntityCMS.java</file>
+            <file>file:/home/alex/NetBeansProjects/site_zemlaynoy_smit/OpenCMS/OpenCMS-Java-Spring/src/java/ua/org/smit/opencms/content/dao/DaoLayerMaterial.java</file>
+            <file>file:/home/alex/NetBeansProjects/site_zemlaynoy_smit/OpenCMS/OpenCMS-Java-Spring/src/java/ua/org/smit/opencms/authorization/dao/DaoInterfaceUserAuth.java</file>
+            <file>file:/home/alex/NetBeansProjects/site_zemlaynoy_smit/OpenCMS/OpenCMS-Java-Spring/src/java/ua/org/smit/opencms/authorization/dao/DaoLayeUserAuth.java</file>
+            <file>file:/home/alex/NetBeansProjects/site_zemlaynoy_smit/OpenCMS/OpenCMS-Java-Spring/src/java/ua/org/smit/opencms/authorization/dao/DaoInterfaceUserAuthImpl.java</file>
         </group>
     </open-files>
 </project-private>

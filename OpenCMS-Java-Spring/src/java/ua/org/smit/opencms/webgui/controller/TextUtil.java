@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class TextUtil {
     
-    public String[] getSubText(String text){
+    public String[] getSubText200(String text){
         String[] list = null;
         if (text!=null && !text.isEmpty()){
             if (text.length() > 200){
@@ -27,4 +27,12 @@ public class TextUtil {
         return list; 
     }
     
+     public String[] getSubText(String text){
+        String[] list = null;
+        if (text!=null && !text.isEmpty()){
+            list = text.split("\n");
+            return list;
+        }
+        return list;
+    }
 }
