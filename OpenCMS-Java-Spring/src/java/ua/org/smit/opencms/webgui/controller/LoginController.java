@@ -7,6 +7,7 @@ package ua.org.smit.opencms.webgui.controller;
 
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -43,7 +44,10 @@ public class LoginController {
             if(this.authService.thePasswordCorrect(login, password)){
                 
                 String session = this.authService.updateUserSession(login);
-                // добавляем сессию в куки пользователя
+                // добавляем сессию в куки пользовател
+                Cookie cookie1 = new Cookie("SESSION",session);
+                cookie1.setMaxAge(60*60*60); //1 hour
+                response.addCookie(cookie1);
                 return "redirect:home";
             } else {
                 System.err.println("Wrong password");

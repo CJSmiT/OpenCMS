@@ -18,4 +18,6 @@ public interface DaoInterfaceUserAuth {
     UserAuth getUserByLogin(String login);
 
     void updateUser(UserAuth user);
+
+    public boolean checkUserInDb(String login);
 }

@@ -9,7 +9,7 @@ package ua.org.smit.opencms.authorization;
  *
  * @author smit
  */
- enum UserType {
+ public enum UserType {
     GUEST,
     MEMBER
 }

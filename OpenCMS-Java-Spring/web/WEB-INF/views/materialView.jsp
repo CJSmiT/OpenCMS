@@ -33,7 +33,7 @@
                     <h1 style="color: green">${material.getTitle()}</h1>
                 </c:otherwise>
             </c:choose>                
-            <c:forEach var="textBody" items="${textUtil.getSubText(material.getTextBody())}">
+            <c:forEach var="textBody" items="${textUtil.getParagraph(material.getTextBody())}">
                     <p>${textBody}</p>
             </c:forEach>
         </div>

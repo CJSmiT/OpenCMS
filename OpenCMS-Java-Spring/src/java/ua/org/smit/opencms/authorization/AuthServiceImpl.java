@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package ua.org.smit.opencms.authorization;
+import java.util.UUID;
 import ua.org.smit.opencms.authorization.dao.DaoInterfaceUserAuth;
 import ua.org.smit.opencms.authorization.dao.DaoInterfaceUserAuthImpl;
 import static ua.org.smit.opencms.webgui.utils.Md5.getHash;
@@ -19,30 +20,39 @@ public class AuthServiceImpl implements AuthService{
 
     @Override
     public UserAuth getUserBySession(String session) {
+        if(session == null){
+            UserAuth user = new UserAuth();
+            user.setType(UserType.GUEST);
+            return user;
+        }
         return dao.getUserBySession(session);
-        /*UserAuth user = new UserAuth();
-        user.setType(UserType.GUEST);
-        return user;*/
     }
 
     @Override
     public boolean theUserIsset(String login) {
-        UserAuth user = dao.getUserByLogin(login);
-        if(user != null)return false;
-        else return true;
+        return dao.checkUserInDb(login);
     }
 
     @Override
     public boolean thePasswordCorrect(String login, String password) {
+        System.out.println("+++ " + login);
         UserAuth user = dao.getUserByLogin(login);
-        if(user.getPassword().equals(getHash(password))) return true;
-        else return false;
+        if(user.getPassword().equals(getHash(password))) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     @Override
     public String updateUserSession(String login) {
-        UserAuth user = dao.getUserBySession(login); //???
+        String session = UUID.randomUUID().toString();
+        
+        UserAuth user = dao.getUserByLogin(login);
+        user.setSession(session);
+        dao.updateUser(user);
         return user.getSession();
     }
+
     
 }

@@ -29,6 +29,11 @@ public class DaoInterfaceUserAuthImpl implements DaoInterfaceUserAuth {
     public void updateUser(UserAuth user) {
         daoUserAuth.updateUser(user);
     }
+
+    @Override
+    public boolean checkUserInDb(String login) {
+        return daoUserAuth.checkUserInDb(login);
+    }
     
     
 }

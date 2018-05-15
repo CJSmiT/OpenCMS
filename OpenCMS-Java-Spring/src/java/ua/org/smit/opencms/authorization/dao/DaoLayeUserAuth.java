@@ -11,8 +11,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import org.hibernate.usertype.UserType;
 import ua.org.smit.opencms.authorization.UserAuth;
+import ua.org.smit.opencms.authorization.UserType;
 import ua.org.smit.opencms.content.dao.ConectMSQL;
 
 /**
@@ -67,6 +67,7 @@ public class DaoLayeUserAuth extends ConectMSQL{
         UserAuth userAuth = null;
         try{
             
+            System.out.println("sql: " + sql);
             preparedStatement = connect.prepareStatement(sql);
             preparedStatement.setString(1,login);
             
@@ -103,14 +104,14 @@ public class DaoLayeUserAuth extends ConectMSQL{
         try {
             String query = "UPDATE `" + table + "` "
                     + "SET login=?,"
-                    //+ "type=?,"
+                    + "type=?,"
                     + "session =?,"
                     + "password=?,"
                     + "WHERE id='"+user.getId()+"' "
                     + "limit 1";
             ps = connect.prepareStatement(query);
             ps.setString(1, user.getLogin());
-            //ps.set(2, user.getType());
+            ps.setString(2, user.getType().toString().toUpperCase());
             ps.setString(3, user.getSession());
             ps.setString(4, user.getPassword());
             
@@ -139,7 +140,7 @@ public class DaoLayeUserAuth extends ConectMSQL{
             userAuth.setLogin(resultSet.getString("login"));
             userAuth.setPassword(resultSet.getString("password"));
             userAuth.setSession(resultSet.getString("session"));         
-           // userAuth.setType((UserType)resultSet.getType());//???
+            userAuth.setType(UserType.valueOf(resultSet.getString("type").toUpperCase()));
             
             
             return userAuth;
@@ -148,6 +149,39 @@ public class DaoLayeUserAuth extends ConectMSQL{
             Logger.getLogger(DaoLayeUserAuth.class.getName()).log(Level.SEVERE, null, ex);
         }
         throw new RuntimeException("Err to get UserAuth");
+    }
+
+    boolean checkUserInDb(String login) {
+        boolean result = false;
+        
+        Connection connect = getConnection();
+        PreparedStatement preparedStatement = null;
+        String sql = "SELECT * FROM " + table + " WHERE login=? limit 1";
+        UserAuth userAuth = null;
+        try{
+            
+            preparedStatement = connect.prepareStatement(sql);
+            preparedStatement.setString(1,login);
+            
+            ResultSet resultSet = preparedStatement.executeQuery();
+            
+            while(resultSet.next()){
+                result = true;
+            }
+            
+            
+        }catch(SQLException ex){
+            Logger.getLogger(DaoLayeUserAuth.class.getName()).log(Level.SEVERE, null, ex);
+        }finally{
+            try {
+                preparedStatement.close();
+                connect.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(DaoLayeUserAuth.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        return result;
     }
     
 }

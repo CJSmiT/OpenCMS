@@ -6,6 +6,8 @@
 package ua.org.smit.opencms.webgui.controller;
 
 import java.util.ArrayList;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -30,7 +32,7 @@ public class ControllerGUI {
     private final TextUtil textUtil = new TextUtil();
     
     @RequestMapping(value= {"/","/home"})
-    public ModelAndView getHome(){
+    public ModelAndView getHome(HttpServletRequest request){
         ModelAndView model = new ModelAndView("home");
         
         ArrayList<MaterialEntityCMS> materialsCat1 = logic.getLastPublicMaterialsByCatAndLimit(1, 5);
@@ -42,7 +44,18 @@ public class ControllerGUI {
         model.addObject("materialsCat3", materialsCat3);
         model.addObject("textUtil", textUtil);
         
-        UserAuth user = this.authService.getUserBySession(null);
+        String session = null;
+        
+        Cookie[] cookies = request.getCookies();
+        if (cookies != null) {
+         for (Cookie cookie : cookies) {
+           if (cookie.getName().equals("SESSION")) {
+                session = cookie.getValue();
+            }
+          }
+        }
+        
+        UserAuth user = this.authService.getUserBySession(session);
         if (!user.isGuest()){
             System.out.println("Hello " + user.getLogin());
         } else {

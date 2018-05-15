@@ -30,7 +30,7 @@ CREATE TABLE `user` (
   `id` int(11) NOT NULL,
   `login` varchar(63) NOT NULL,
   `password` varchar(200) NOT NULL,
-  `session` varchar(300) NOT NULL,
+  `session` varchar(300) DEFAULT NULL,
   `type` enum('GUEST','MEMBER') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 

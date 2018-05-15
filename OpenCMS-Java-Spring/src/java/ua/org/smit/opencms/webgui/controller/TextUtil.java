@@ -27,7 +27,7 @@ public class TextUtil {
         return list; 
     }
     
-     public String[] getSubText(String text){
+     public String[] getParagraph(String text){
         String[] list = null;
         if (text!=null && !text.isEmpty()){
             list = text.split("\n");
