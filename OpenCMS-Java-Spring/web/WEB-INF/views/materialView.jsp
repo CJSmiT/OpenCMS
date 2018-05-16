@@ -16,15 +16,9 @@
     <body>
         <jsp:include page="menu.jsp" />
         <div style="margin:0 auto;max-width: 1000px; width: 100%">
-            
-            <a href="${pageContext.request.contextPath}/material_manager?alias=${material.getAlias()}" style="color: whitesmoke; display: inline-block">
-                <div style="width:150px; height: 40px;background-color: dimgray;margin: 5px">
-                    Manager material
-                </div>
+            <a href="${pageContext.request.contextPath}/material_manager?alias=${material.getAlias()}">
+                <button type="button" class="btn btn-primary">Manager material</button>           
             </a>
-                    
-            
-            
             <c:choose>
                 <c:when test="${material.isIsPublic() == false}">
                     <h1 style="color: red">${material.getTitle()}</h1>

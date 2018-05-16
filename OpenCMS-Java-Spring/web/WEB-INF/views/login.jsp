@@ -10,12 +10,11 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>login</title>
+        <jsp:include page="headLinks.jsp" />
     </head>
-    <body>
-        <h1>Hello</h1>
-        
+    <body>     
         <div style="margin:0 auto; max-width: 900px; width:100%">
-            <form method="post" action="login_action">
+            <form class=".form-horizontal" method="post" action="login_action">
                <h3>Login</h3>
                <div>
                    <input type="text" 
@@ -31,11 +30,7 @@
                           required="required">
                </div>
                <input type="submit">
-            </form>
-            
-            
-            
-            
+            </form>   
         </div>
     </body>
 </html>

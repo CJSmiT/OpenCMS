@@ -25,15 +25,11 @@
                         </c:when> 
                         <c:otherwise>
                             <a class="btn btn-danger" href="${pageContext.request.contextPath}/change_public_status_material?alias=${material.getAlias()}&public=false">Set as UnPublc</a>
-                           
                         </c:otherwise>
                     </c:choose>
                 <div style="display: inline-block"> 
-                    <a href="${pageContext.request.contextPath}/delete_material?idMaterial=${material.getId()}" 
-                       style="color: whitesmoke;">
-                        <div style="width:150px; height: 40px;background-color: dimgray;margin: 5px">
-                        delete 
-                        </div>
+                    <a href="${pageContext.request.contextPath}/delete_material?idMaterial=${material.getId()}">
+                        <button type="button" class="btn btn-danger">Delete</button>
                     </a>
                 </div>
                 </c:if>
