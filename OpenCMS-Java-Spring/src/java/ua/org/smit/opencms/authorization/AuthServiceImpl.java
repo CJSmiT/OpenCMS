@@ -47,10 +47,11 @@ public class AuthServiceImpl implements AuthService{
     @Override
     public String updateUserSession(String login) {
         String session = UUID.randomUUID().toString();
-        
+
         UserAuth user = dao.getUserByLogin(login);
         user.setSession(session);
         dao.updateUser(user);
+        
         return user.getSession();
     }
 

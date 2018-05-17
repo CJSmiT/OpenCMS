@@ -66,8 +66,6 @@ public class DaoLayeUserAuth extends ConectMSQL{
         String sql = "SELECT * FROM " + table + " WHERE login=? limit 1";
         UserAuth userAuth = null;
         try{
-            
-            System.out.println("sql: " + sql);
             preparedStatement = connect.prepareStatement(sql);
             preparedStatement.setString(1,login);
             
@@ -104,11 +102,12 @@ public class DaoLayeUserAuth extends ConectMSQL{
         try {
             String query = "UPDATE `" + table + "` "
                     + "SET login=?,"
-                    + "type=?,"
-                    + "session =?,"
-                    + "password=?,"
+                    + "type=?, "
+                    + "session=?, "
+                    + "password=?, "
                     + "WHERE id='"+user.getId()+"' "
                     + "limit 1";
+            //UPDATE `user` SET `login`='alex',`password`='e10adc3949ba59abbe56e057f20f883e', `session`='111',`type`='MEMBER' WHERE `id`='2' LIMIT 1
             ps = connect.prepareStatement(query);
             ps.setString(1, user.getLogin());
             ps.setString(2, user.getType().toString().toUpperCase());
