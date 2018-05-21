@@ -23,11 +23,11 @@ public class DaoLayeUserAuth extends ConectMSQL{
     
     private final String table = "user";
     
-    public UserAuth getUserBySession(String session) {
+    public UserAuthDto getUserBySession(String session) {
         Connection connect = getConnection();
         PreparedStatement preparedStatement = null;
         String sql = "SELECT * FROM " + table + " WHERE session=? limit 1";
-        UserAuth userAuth = null;
+        UserAuthDto userAuth = null;
         try{
             
             preparedStatement = connect.prepareStatement(sql);
@@ -60,11 +60,11 @@ public class DaoLayeUserAuth extends ConectMSQL{
     }
 
 
-    public UserAuth getUserByLogin(String login) {
+    public UserAuthDto getUserByLogin(String login) {
         Connection connect = getConnection();
         PreparedStatement preparedStatement = null;
         String sql = "SELECT * FROM " + table + " WHERE login=? limit 1";
-        UserAuth userAuth = null;
+        UserAuthDto userAuth = null;
         try{
             preparedStatement = connect.prepareStatement(sql);
             preparedStatement.setString(1,login);
@@ -96,7 +96,7 @@ public class DaoLayeUserAuth extends ConectMSQL{
     }
 
 
-    public void updateUser(UserAuth user) {
+    public void updateUser(UserAuthDto user) {
         Connection connect = getConnection();
         PreparedStatement ps = null;
         try {
@@ -105,6 +105,7 @@ public class DaoLayeUserAuth extends ConectMSQL{
                     + "type=?, "
                     + "session=?, "
                     + "password=?, "
+                    + "groups=? "
                     + "WHERE id='"+user.getId()+"' "
                     + "limit 1";
             //UPDATE `user` SET `login`='alex',`password`='e10adc3949ba59abbe56e057f20f883e', `session`='111',`type`='MEMBER' WHERE `id`='2' LIMIT 1
@@ -113,7 +114,7 @@ public class DaoLayeUserAuth extends ConectMSQL{
             ps.setString(2, user.getType().toString().toUpperCase());
             ps.setString(3, user.getSession());
             ps.setString(4, user.getPassword());
-            
+            ps.setString(5, user.getGroups());
             ps.executeUpdate();
             
         } catch (SQLException ex) {
@@ -131,18 +132,18 @@ public class DaoLayeUserAuth extends ConectMSQL{
     }
     
 
-    private UserAuth getByParser(ResultSet resultSet) {
+    private UserAuthDto getByParser(ResultSet resultSet) {
         try {
-            UserAuth userAuth = new UserAuth();
+            UserAuthDto userAuthDto = new UserAuthDto();
             
-            userAuth.setId(resultSet.getInt("id"));
-            userAuth.setLogin(resultSet.getString("login"));
-            userAuth.setPassword(resultSet.getString("password"));
-            userAuth.setSession(resultSet.getString("session"));         
-            userAuth.setType(UserType.valueOf(resultSet.getString("type").toUpperCase()));
+            userAuthDto.setId(resultSet.getInt("id"));
+            userAuthDto.setLogin(resultSet.getString("login"));
+            userAuthDto.setPassword(resultSet.getString("password"));
+            userAuthDto.setSession(resultSet.getString("session"));         
+            userAuthDto.setType(resultSet.getString("type").toUpperCase());
+            userAuthDto.setGroups(resultSet.getString("groups"));
             
-            
-            return userAuth;
+            return userAuthDto;
             
         } catch (SQLException ex) {
             Logger.getLogger(DaoLayeUserAuth.class.getName()).log(Level.SEVERE, null, ex);
@@ -156,7 +157,6 @@ public class DaoLayeUserAuth extends ConectMSQL{
         Connection connect = getConnection();
         PreparedStatement preparedStatement = null;
         String sql = "SELECT * FROM " + table + " WHERE login=? limit 1";
-        UserAuth userAuth = null;
         try{
             
             preparedStatement = connect.prepareStatement(sql);

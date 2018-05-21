@@ -19,48 +19,42 @@
         
         <div class="panel panel-default" style="margin:0 auto; max-width: 900px; width:100%">
             <div class="panel-body">
+                
                 <div class="panel panel-info">
-                    <c:forEach var="material" items="${materialsCat1}">
-                        <div class="panel-heading">
+                    <div class="panel-heading">
+                        Materials by cat 1
+                    </div>
+                    <div class="panel-body">
+                        <c:forEach var="material" items="${materialsCat1}">
                             <a href="${pageContext.request.contextPath}/show_material?alias=${material.getAlias()}">
-                            <h3 style="color: blue">${material.getTitle()}</h3>
+                                <h3 style="color: blue">${material.getTitle()}</h3>
                             </a>
-                        </div>
-                        <div class="panel-body">
                             <c:forEach var="textBody" items="${textUtil.getSubText200(material.getTextBody())}">
                                 <p>${textBody}</p>
                             </c:forEach>
-                        </div>
-                    </c:forEach>
+                                <hr>
+                        </c:forEach>
+                    </div>
                 </div>
+                
                 <div class="panel panel-info">
-                    <c:forEach var="material" items="${materialsCat2}">
-                        <div class="panel-heading">
+                    <div class="panel-heading">
+                        Materials by cat 2
+                    </div>
+                    <div class="panel-body">
+                        <c:forEach var="material" items="${materialsCat2}">
                             <a href="${pageContext.request.contextPath}/show_material?alias=${material.getAlias()}">
-                            <h3 style="color: blue">${material.getTitle()}</h3>
+                                <h3 style="color: blue">${material.getTitle()}</h3>
                             </a>
-                        </div>
-                        <div class="panel-body">
                             <c:forEach var="textBody" items="${textUtil.getSubText200(material.getTextBody())}">
                                 <p>${textBody}</p>
                             </c:forEach>
-                        </div>
-                    </c:forEach>
+                                <hr>
+                        </c:forEach>
+                    </div>
                 </div>
-                <div class="panel panel-info">
-                    <c:forEach var="material" items="${materialsCat3}">
-                        <div class="panel-heading">
-                            <a href="${pageContext.request.contextPath}/show_material?alias=${material.getAlias()}">
-                            <h3 style="color: blue">${material.getTitle()}</h3>
-                            </a>
-                        </div>
-                        <div class="panel-body">
-                            <c:forEach var="textBody" items="${textUtil.getSubText200(material.getTextBody())}">
-                                <p>${textBody}</p>
-                            </c:forEach>
-                        </div>
-                    </c:forEach>
-                </div>
+                
+
             </div>
         </div>
                 

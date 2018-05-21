@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import ua.org.smit.opencms.authorization.AuthService;
 import ua.org.smit.opencms.authorization.AuthServiceImpl;
+import ua.org.smit.opencms.webgui.utils.SessionUtil;
 
 /**
  *
@@ -45,9 +46,8 @@ public class LoginController {
                 
                 String session = this.authService.updateUserSession(login);
                 // добавляем сессию в куки пользовател
-                Cookie cookie1 = new Cookie("SESSION",session);
-                cookie1.setMaxAge(60*60*60); //1 hour
-                response.addCookie(cookie1);
+                SessionUtil.setSession(session, response);
+                
                 return "redirect:home";
             } else {
                 System.err.println("Wrong password");

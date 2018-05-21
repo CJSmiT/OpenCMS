@@ -18,9 +18,12 @@
                 
         
         <div style="margin: 0 auto; max-width: 1000px; width: 100%">
-            <div class="panel-body">
-                <div class="panel panel-info">
-                    <c:forEach var="material" items="${all_materials}">
+            <div class="panel panel-info">
+                    <div class="panel-heading">
+                        All materials
+                    </div>
+                    <div class="panel-body">
+                       <c:forEach var="material" items="${all_materials}">
                         <div class="panel-heading">
                             <a href="${pageContext.request.contextPath}/show_material?alias=${material.getAlias()}">
                                 <c:choose>
@@ -38,9 +41,12 @@
                                     <p>${textBody}</p>
                             </c:forEach>
                         </div>
+                                <hr>
                     </c:forEach>
+                    </div>
                 </div>
-            </div>
+            
+
         </div>
     </body>
 </html>

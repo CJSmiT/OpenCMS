@@ -39,10 +39,10 @@
                     <input type="hidden" name="isPublic" value="${material.isIsPublic()}"> 
                 </c:if>
                <h3>Заголовок</h3>
-               <input type="text" name="title" value="${material.getTitle()}" style="width: 100%; height: 30px">
+               <input class="form-control" type="text" name="title" value="${material.getTitle()}" style="width: 100%; height: 30px">
                <h3>Категория</h3>
                <div>
-                   <select name="categoryId" style="width: 100%; height: 30px">
+                   <select class="form-control" name="categoryId" style="width: 100%; height: 30px">
                        <c:forEach var="category" items="${categories}">
                            <option value="${category.getId()}" 
                                    <c:if test="${category.getId()== material.getCategoryId()}">
@@ -53,8 +53,8 @@
                    </select>
                </div>
                <h3>Материал</h3>
-               <textarea name="textBody" style="width: 100%; height: 150px">${material.getTextBody()}</textarea>
-               <input type="submit" style="width: 100%; height: 30px; color: blue">
+               <textarea class="form-control" name="textBody" style="width: 100%; height: 150px">${material.getTextBody()}</textarea>
+               <input class="btn btn-success" type="submit">
             </form>
             </div>
         

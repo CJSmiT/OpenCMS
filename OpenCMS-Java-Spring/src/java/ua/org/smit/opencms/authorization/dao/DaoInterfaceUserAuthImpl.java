@@ -16,17 +16,17 @@ public class DaoInterfaceUserAuthImpl implements DaoInterfaceUserAuth {
     private DaoLayeUserAuth daoUserAuth = new DaoLayeUserAuth();
 
     @Override
-    public UserAuth getUserBySession(String session) {
+    public UserAuthDto getUserBySession(String session) {
         return daoUserAuth.getUserBySession(session);
     }
 
     @Override
-    public UserAuth getUserByLogin(String login) {
+    public UserAuthDto getUserByLogin(String login) {
         return daoUserAuth.getUserByLogin(login);
     }
 
     @Override
-    public void updateUser(UserAuth user) {
+    public void updateUser(UserAuthDto user) {
         daoUserAuth.updateUser(user);
     }
 

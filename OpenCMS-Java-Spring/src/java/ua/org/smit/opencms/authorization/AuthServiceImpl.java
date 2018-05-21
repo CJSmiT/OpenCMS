@@ -25,7 +25,7 @@ public class AuthServiceImpl implements AuthService{
             user.setType(UserType.GUEST);
             return user;
         }
-        return dao.getUserBySession(session);
+        return Converter.toEntity(dao.getUserBySession(session));
     }
 
     @Override
@@ -35,8 +35,8 @@ public class AuthServiceImpl implements AuthService{
 
     @Override
     public boolean thePasswordCorrect(String login, String password) {
-        System.out.println("+++ " + login);
-        UserAuth user = dao.getUserByLogin(login);
+        
+        UserAuth user =  Converter.toEntity(dao.getUserByLogin(login));
         if(user.getPassword().equals(getHash(password))) {
             return true;
         } else {
@@ -48,9 +48,9 @@ public class AuthServiceImpl implements AuthService{
     public String updateUserSession(String login) {
         String session = UUID.randomUUID().toString();
 
-        UserAuth user = dao.getUserByLogin(login);
+        UserAuth user = Converter.toEntity(dao.getUserByLogin(login));
         user.setSession(session);
-        dao.updateUser(user);
+        dao.updateUser(Converter.toDto(user));
         
         return user.getSession();
     }

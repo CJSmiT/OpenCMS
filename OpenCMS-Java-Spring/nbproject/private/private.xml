@@ -1,21 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
-    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="1">
+        <file>
+            <url>src/java/ua/org/smit/opencms/webgui/utils/SessionUtil.java</url>
+            <bookmark id="1">
+                <name/>
+                <line>22</line>
+                <key/>
+            </bookmark>
+        </file>
+    </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/alex/NetBeansProjects/site_zemlaynoy_smit/OpenCMS/OpenCMS-Java-Spring/src/java/ua/org/smit/opencms/authorization/AuthServiceImpl.java</file>
-            <file>file:/home/alex/NetBeansProjects/site_zemlaynoy_smit/OpenCMS/OpenCMS-Java-Spring/web/WEB-INF/views/headLinks.jsp</file>
-            <file>file:/home/alex/NetBeansProjects/site_zemlaynoy_smit/OpenCMS/OpenCMS-Java-Spring/src/java/ua/org/smit/opencms/content/dao/ConectMSQL.java</file>
-            <file>file:/home/alex/NetBeansProjects/site_zemlaynoy_smit/OpenCMS/OpenCMS-Java-Spring/src/java/ua/org/smit/opencms/authorization/AuthService.java</file>
-            <file>file:/home/alex/NetBeansProjects/site_zemlaynoy_smit/OpenCMS/OpenCMS-Java-Spring/src/java/ua/org/smit/opencms/authorization/dao/DaoLayeUserAuth.java</file>
-            <file>file:/home/alex/NetBeansProjects/site_zemlaynoy_smit/OpenCMS/OpenCMS-Java-Spring/src/java/ua/org/smit/opencms/authorization/dao/DaoInterfaceUserAuthImpl.java</file>
-            <file>file:/home/alex/NetBeansProjects/site_zemlaynoy_smit/OpenCMS/OpenCMS-Java-Spring/web/WEB-INF/views/menu.jsp</file>
-            <file>file:/home/alex/NetBeansProjects/site_zemlaynoy_smit/OpenCMS/OpenCMS-Java-Spring/src/java/ua/org/smit/opencms/webgui/controller/LoginController.java</file>
-            <file>file:/home/alex/NetBeansProjects/site_zemlaynoy_smit/OpenCMS/OpenCMS-Java-Spring/web/WEB-INF/views/login.jsp</file>
-            <file>file:/home/alex/NetBeansProjects/site_zemlaynoy_smit/OpenCMS/OpenCMS-Java-Spring/src/java/links</file>
-            <file>file:/home/alex/NetBeansProjects/site_zemlaynoy_smit/OpenCMS/OpenCMS-Java-Spring/web/WEB-INF/views/material_manager.jsp</file>
-            <file>file:/home/alex/NetBeansProjects/site_zemlaynoy_smit/OpenCMS/OpenCMS-Java-Spring/web/WEB-INF/views/materialView.jsp</file>
-            <file>file:/home/alex/NetBeansProjects/site_zemlaynoy_smit/OpenCMS/OpenCMS-Java-Spring/web/WEB-INF/views/home.jsp</file>
+            <file>file:/home/smit/NetBeansProjects/OpenCMS/OpenCMS-Java-Spring/src/java/ua/org/smit/opencms/webgui/controller/ControllerGUI.java</file>
+            <file>file:/home/smit/NetBeansProjects/OpenCMS/OpenCMS-Java-Spring/src/java/ua/org/smit/opencms/authorization/dao/DaoLayeUserAuth.java</file>
+            <file>file:/home/smit/NetBeansProjects/OpenCMS/OpenCMS-Java-Spring/src/java/ua/org/smit/opencms/authorization/dao/DaoInterfaceUserAuth.java</file>
+            <file>file:/home/smit/NetBeansProjects/OpenCMS/OpenCMS-Java-Spring/src/java/ua/org/smit/opencms/authorization/dao/DaoInterfaceUserAuthImpl.java</file>
+            <file>file:/home/smit/NetBeansProjects/OpenCMS/OpenCMS-Java-Spring/src/java/ua/org/smit/opencms/authorization/AuthServiceImpl.java</file>
+            <file>file:/home/smit/NetBeansProjects/OpenCMS/OpenCMS-Java-Spring/src/java/ua/org/smit/opencms/authorization/dao/UserAuthDto.java</file>
+            <file>file:/home/smit/NetBeansProjects/OpenCMS/OpenCMS-Java-Spring/src/java/ua/org/smit/opencms/authorization/Converter.java</file>
+            <file>file:/home/smit/NetBeansProjects/OpenCMS/OpenCMS-Java-Spring/src/java/ua/org/smit/opencms/authorization/ConverterByComa.java</file>
+            <file>file:/home/smit/NetBeansProjects/OpenCMS/OpenCMS-Java-Spring/src/java/ua/org/smit/opencms/authorization/UserAuth.java</file>
+            <file>file:/home/smit/NetBeansProjects/OpenCMS/OpenCMS-Java-Spring/src/java/ua/org/smit/opencms/authorization/UserType.java</file>
         </group>
     </open-files>
 </project-private>

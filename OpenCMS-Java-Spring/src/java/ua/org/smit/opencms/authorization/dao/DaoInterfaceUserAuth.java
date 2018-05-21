@@ -13,11 +13,11 @@ import ua.org.smit.opencms.authorization.UserAuth;
  */
 public interface DaoInterfaceUserAuth {
     
-    UserAuth getUserBySession(String session);
+    UserAuthDto getUserBySession(String session);
 
-    UserAuth getUserByLogin(String login);
+    UserAuthDto getUserByLogin(String login);
 
-    void updateUser(UserAuth user);
+    void updateUser(UserAuthDto user);
 
     public boolean checkUserInDb(String login);
 }

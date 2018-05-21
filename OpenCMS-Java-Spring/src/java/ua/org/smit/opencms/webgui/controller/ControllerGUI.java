@@ -8,9 +8,12 @@ package ua.org.smit.opencms.webgui.controller;
 import java.util.ArrayList;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import ua.org.smit.opencms.authorization.AuthService;
 import ua.org.smit.opencms.authorization.AuthServiceImpl;
@@ -21,6 +24,7 @@ import ua.org.smit.opencms.content.MaterialDto;
 import ua.org.smit.opencms.content.LogicInterface;
 import ua.org.smit.opencms.webgui.dto.ConverterGuiToLogic;
 import ua.org.smit.opencms.webgui.dto.MaterialGUIDto;
+import ua.org.smit.opencms.webgui.utils.SessionUtil;
 
 
 @Controller
@@ -44,18 +48,9 @@ public class ControllerGUI {
         model.addObject("materialsCat3", materialsCat3);
         model.addObject("textUtil", textUtil);
         
-        String session = null;
         
-        Cookie[] cookies = request.getCookies();
-        if (cookies != null) {
-         for (Cookie cookie : cookies) {
-           if (cookie.getName().equals("SESSION")) {
-                session = cookie.getValue();
-            }
-          }
-        }
         
-        UserAuth user = this.authService.getUserBySession(session);
+        UserAuth user = authService.getUserBySession(SessionUtil.getSession(request));
         if (!user.isGuest()){
             System.out.println("Hello " + user.getLogin());
         } else {
@@ -66,8 +61,14 @@ public class ControllerGUI {
     }
     
     @RequestMapping(value= "/material_manager")
-    public ModelAndView materialManager(
+    public Object materialManager(
+            HttpServletRequest request,
             @RequestParam(value = "alias", required = false) String alias){
+        
+        UserAuth user = authService.getUserBySession(SessionUtil.getSession(request));
+        if (user.isGuest()) return "redirect:login";
+        if (!user.isAdminGroup()) return "redirect:login";
+        
         ModelAndView model = new ModelAndView("material_manager");
         if(alias != null){
             MaterialEntityCMS material = logic.getMaterialByAlias(alias);
@@ -79,7 +80,12 @@ public class ControllerGUI {
     
     
     @RequestMapping(value= "/material_manager_action")
-    public Object materialManagerAction(MaterialGUIDto material){
+    public Object materialManagerAction(MaterialGUIDto material,
+            HttpServletRequest request){
+        
+        UserAuth user = authService.getUserBySession(SessionUtil.getSession(request));
+        if (user.isGuest()) return new ResponseEntity(HttpStatus.UNAUTHORIZED);
+        
         String alias = null;
         
         if (material.getId()>0){

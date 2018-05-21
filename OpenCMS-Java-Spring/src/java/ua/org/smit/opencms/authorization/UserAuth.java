@@ -5,6 +5,8 @@
  */
 package ua.org.smit.opencms.authorization;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author smit
@@ -15,6 +17,15 @@ public class UserAuth {
     private UserType type;
     private String session;
     private String password;
+    private ArrayList<String> groups;
+
+    public ArrayList<String> getGroups() {
+        return groups;
+    }
+
+    public void setGroups(ArrayList<String> groups) {
+        this.groups = groups;
+    }
 
     public String getSession() {
         return session;
@@ -58,6 +69,15 @@ public class UserAuth {
 
     public boolean isGuest() {
         return this.type == UserType.GUEST;
+    }
+
+    public boolean isAdminGroup() {
+        for (String group:groups){
+            if (group.equalsIgnoreCase("admin")){
+                return true;
+            }
+        }
+        return false;
     }
     
     
